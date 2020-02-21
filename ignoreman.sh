@@ -20,7 +20,7 @@ if [ "$#" -eq 0 ]; then
   IFS+=","
   for item in $(__gi list); do
     echo "$item"
-  done | fzf --multi --ansi --exact --header='Select the templates you want to add to your .gitignore file' --preview="curl -L -s https://www.gitignore.io/api/{}" | paste -s -d "," - |
+  done | fzf --multi --ansi --bind pgdn:preview-down --bind pgup:preview-up --header='Select the templates you want to add to your .gitignore file' --preview="curl -L -s https://www.gitignore.io/api/{}" | paste -s -d "," - |
     { read -r result && __writeresult "$result"; }
 else
   __gi "$@"
