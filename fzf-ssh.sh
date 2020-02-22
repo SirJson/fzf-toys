@@ -4,4 +4,4 @@ if [[ ! -r ~/.ssh/config ]]; then
     exit 1
 fi
 
-echo ~/.ssh/config | awk '{ if($1 =="Host" && $2 !="*") print $2 }' | fzf | xargs -o ssh
+cat ~/.ssh/config | awk '{ if($1 =="Host" && $2 !="*") print $2 }' | fzf | xargs -o ssh
