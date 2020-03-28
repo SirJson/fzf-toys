@@ -1,0 +1,2 @@
+#!/bin/bash
+systemctl list-units -al --no-pager --plain | tr -d '●' | fzf --with-nth=1,2,3,4,5 --exact --reverse --header-lines=1 --no-height --bind "enter:execute@sudo systemctl status {1} | less@" --ansi
